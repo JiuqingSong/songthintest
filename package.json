@@ -1,6 +1,6 @@
 {
   "name": "songthintest",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "This is a test",
   "main": "index.js",
   "scripts": {
