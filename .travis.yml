@@ -8,9 +8,11 @@ script:
 deploy:
   - provider: script
     script: node ./test.js
+    skip-cleanup: true
     on:
       branch: master
   - provider: script
     script: node ./build.js
+    skip-cleanup: true
     on:
       branch: master
