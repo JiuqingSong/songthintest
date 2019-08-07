@@ -1,0 +1,13 @@
+language: node_js
+sudo: required
+addons:
+    chrome: stable
+node_js:
+    - 10
+before_install:
+    - yarn
+install:
+    - npm run test
+script:
+cache:
+    yarn: true
