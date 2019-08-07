@@ -7,7 +7,15 @@ node_js:
 before_install:
     - yarn
 install:
-    - npm run test
 script:
 cache:
     yarn: true
+deploy:
+  - provider: script
+    script: node ./test.js
+    on:
+      branch: master
+  - provider: script
+    script: node ./build.js
+    on:
+      branch: master
