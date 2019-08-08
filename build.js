@@ -21,11 +21,13 @@ var token = process.argv[2];
 if (needPublish) {
     var npmrcName = path.join(__dirname, '.npmrc');
     var npmrc = fs.readFileSync(npmrcName).toString();
-    npmrc += `\n//registry.npmjs.org/:_authToken=${token}\n`;
-    fs.writeFileSync(npmrcName, npmrc);
+    var appendedNpmrc = `${npmrc}\n//registry.npmjs.com/:_authToken=${token}\n`;
+    fs.writeFileSync(npmrcName, appendedNpmrc);
 
     exec('npm publish', {
         stdio: 'inherit',
         cwd: __dirname
     })
+
+    fs.writeFileSync(npmrcName, npmrc);
 }
