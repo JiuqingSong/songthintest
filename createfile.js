@@ -12,6 +12,6 @@ if (!dir || dir == 'false') {
 dir = path.join(__dirname, 'dist', dir);
 mkdirp.sync(dir);
 console.log(`Target dir ${dir} created`);
-dir = path.join(dir, 'test.txt');
+dir = path.join(dir, 'test02.txt');
 fs.writeFileSync(dir, 'This is a test');
 console.log(`Target file ${dir} created`);
