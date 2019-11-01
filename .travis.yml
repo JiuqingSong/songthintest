@@ -5,14 +5,17 @@ node_js:
 before_install:
 install:
 script:
+  node ./createfile.js $TRAVIS_PULL_REQUEST
 deploy:
-  - provider: script
-    script: node ./test.js
+  - provider: pages
     skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    local-dir: ./dist
+    keep-history: true
     on:
-      branch: master
-  - provider: script
-    script: node ./build.js $NPM_TOKEN
-    skip-cleanup: true
-    on:
-      branch: master
+        condition: $TRAVIS_PULL_REQUEST > 0
+  # - provider: script
+  #   script: node ./build.js $NPM_TOKEN
+  #   skip-cleanup: true
+  #   on:
+  #     branch: master
